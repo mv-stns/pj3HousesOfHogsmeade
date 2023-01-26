@@ -29,7 +29,6 @@ public class House {
         g2d.fillRect(x,y,width,height);
 
         // Zeichne Dach (rechteckig oben anliegend) | KEIN DREIECK
-        //set color to a darker shade of the wall color
         g2d.setColor(new Color(wallColor.getRed() - 50, wallColor.getGreen() - 50, wallColor.getBlue() - 50));
         g2d.fillRect(x, y, width, height/5);
 
@@ -38,7 +37,6 @@ public class House {
 
         // Tür der Häuser
         g2d.setColor(new Color(199, 199, 199));
-        // door is always in the middle of the house and has a fixed width of 10
         int doorWidth = 10;
         int doorHeight = 20;
         int doorX = x + width/2 - doorWidth/2;
@@ -48,6 +46,7 @@ public class House {
     }
 
     private void setWindows(Graphics2D g2d) {
+        // TODO Refactoring
         int leftHouseHalf = width/2;
         int rightHouseHalf = width - leftHouseHalf;
         int windowHeight;
@@ -59,7 +58,7 @@ public class House {
         if (width <= 50) {
             windowHeight = height/4;
             windowWidth = width/4;
-            // center windows in each half
+
             int leftWindowX = x + leftHouseHalf/2 - windowWidth/2;
             int rightWindowX = x + leftHouseHalf + rightHouseHalf/2 - windowWidth/2;
             int windowY = y + height/2 - windowHeight/2 - 2;
@@ -71,7 +70,7 @@ public class House {
             g2d.drawRect(leftWindowX, windowY, windowWidth, windowHeight);
             g2d.drawRect(rightWindowX, windowY, windowWidth, windowHeight);
         } else if (width <= 150) {
-            // set two windows above each other in each half
+
             windowHeight = height/4;
             windowWidth = width/4;
             int leftWindowX = x + leftHouseHalf/2 - windowWidth/2;
@@ -98,7 +97,7 @@ public class House {
             g2d.drawRect(leftWindowX, windowY, windowWidth, windowHeight);
             g2d.drawRect(rightWindowX, windowY, windowWidth, windowHeight);
         } else {
-            // set two windows besides each other in each half. Quater of the house width
+            // TODO Andere Positionierung einrichten
             windowHeight = height/6;
             windowWidth = width/6;
             int leftWindowX = x + leftHouseHalf/2 - windowWidth/2;
@@ -151,8 +150,7 @@ public class House {
         return false;
     }
 
-    // method to gen a number between min and max
-    public int genRandom( int min, int max) {
+    private int genRandom( int min, int max) {
         return min + (int)(Math.random() * ((max - min) + 1));
     }
 
