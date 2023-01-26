@@ -24,7 +24,6 @@ public class Sun {
 
             g2d.setColor(Color.YELLOW);
             g2d.fillOval(x,y,radius*2,radius*2);
-            // draw radial gradient around sun.
             RadialGradientPaint p = new RadialGradientPaint(x + radius, y + radius, radius, new float[]{0.0f, 1.0f}, new Color[]{new Color(255, 255, 255, 0), new Color(255, 235, 147, 192)});
             g2d.setPaint(p);
             g2d.fillOval(x,y,radius*2,radius*2);
