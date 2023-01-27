@@ -1,9 +1,8 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.Serial;
-
-import javax.swing.JPanel;
 
 /**
  * Basis-Panel stellt Grundfunktionen fuer den Aufbau interaktiver Anwendungen zur
@@ -20,6 +19,7 @@ public class Hogsmeade extends JPanel implements MouseListener {
 	Sun sun;
 	House[] houses;
 	Tree[] trees;
+	final int STREET_LEVEL = 450;
 	/**
 	 * Initialisierung des Panels und setzen des MouseListerns
 	 * fuer die Verwendung von Maus-Ereignissen
@@ -40,29 +40,82 @@ public class Hogsmeade extends JPanel implements MouseListener {
 
 	}
 
+	/**
+	 * Methode zum initialisieren der Sonne
+	 * @param SCREEN_WIDTH Breite des JFrames. Wird benoetigt, um die Sonne an der richtigen Stelle zu platzieren
+	 */
 	private void initSun(int SCREEN_WIDTH) {
-		sun = new Sun(SCREEN_WIDTH - 150, 50, 50);
+		sun = new Sun();
+		sun.setX(SCREEN_WIDTH - 150);
+		sun.setY(50);
+		sun.setRadius(50);
 	}
 
+	/**
+	 * Methode zum initialisieren der Häuser
+	 */
 	private void initHouses() {
-		houses = new House[5];
-		houses[0] = new House(10, 450, 100, 150, new Color(165, 231, 165));
-		houses[0].setY(houses[0].getY() - houses[0].getHeight()); // Häuser sollen auf der Straße stehen, position wird umgeschrieben
-		houses[1] = new House(houses[0].getWidth() + houses[0].getX(), 450, 200, 200, new Color(210, 210, 185));
-		houses[1].setY(houses[1].getY() - houses[1].getHeight());
-		houses[2] = new House(houses[1].getWidth() + houses[1].getX(), 450, 150, 160, new Color(252, 181, 50));
-		houses[2].setY(houses[2].getY() - houses[2].getHeight());
-		houses[3] = new House(houses[2].getWidth() + houses[2].getX(), 450, 50, 90, new Color(231, 165, 165));
-		houses[3].setY(houses[3].getY() - houses[3].getHeight());
-		houses[4] = new House(houses[3].getWidth() + houses[3].getX(), 450, 250, 60, new Color(165, 165, 231));
-		houses[4].setY(houses[4].getY() - houses[4].getHeight());
+		houses = new House[5]; // Initialisiere Array mit 5 Haeusern
+		for (int i = 0; i < houses.length; i++) {
+			houses[i] = new House();
+		}
+		houses[0].setX(10);
+		houses[0].setY(STREET_LEVEL);
+		houses[0].setWidth(100);
+		houses[0].setHeight(150);
+		houses[0].setWallColor(new Color(255, 50, 50));
+		houses[0].setWindowAmount(3);
+		houses[1].setX(houses[0].getWidth() + houses[0].getX());
+		houses[1].setY(STREET_LEVEL);
+		houses[1].setWidth(200);
+		houses[1].setHeight(200);
+		houses[1].setWallColor(new Color(210, 210, 185));
+		houses[1].setWindowAmount(5);
+		houses[2].setX(houses[1].getWidth() + houses[1].getX());
+		houses[2].setY(STREET_LEVEL);
+		houses[2].setWidth(150);
+		houses[2].setHeight(160);
+		houses[2].setWallColor(new Color(252, 181, 50));
+		houses[2].setWindowAmount(4);
+		houses[3].setX(houses[2].getWidth() + houses[2].getX());
+		houses[3].setY(STREET_LEVEL);
+		houses[3].setWidth(50);
+		houses[3].setHeight(90);
+		houses[3].setWallColor(new Color(231, 165, 165));
+		houses[3].setWindowAmount(2);
+		houses[4].setX(houses[3].getWidth() + houses[3].getX());
+		houses[4].setY(STREET_LEVEL);
+		houses[4].setWidth(250);
+		houses[4].setHeight(120);
+		houses[4].setWallColor(new Color(165, 165, 231));
+		houses[4].setWindowAmount(6);
+		for (House house : houses) {
+			house.fixY(STREET_LEVEL, house);
+		}
 	}
 
+	/**
+	 * Methode zum initialisieren der Baeume
+	 */
 	private void initTrees() {
 		trees = new Tree[3];
-		trees[0] = new Tree(100, 350, 50, 50);
-		trees[1] = new Tree(300, 350, 75, 75);
-		trees[2] = new Tree(500, 350, 60, 60);
+		trees[0] = new Tree();
+		trees[0].setX(100);
+		trees[0].setY(350);
+		trees[0].setWidth(50);
+		trees[0].setHeight(50);
+
+		trees[1] = new Tree();
+		trees[1].setX(300);
+		trees[1].setY(350);
+		trees[1].setWidth(75);
+		trees[1].setHeight(75);
+
+		trees[2] = new Tree();
+		trees[2].setX(500);
+		trees[2].setY(350);
+		trees[2].setWidth(60);
+		trees[2].setHeight(60);
 	}
 
 	/**
@@ -78,27 +131,41 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		// Himmel Zeichnen
+		GradientPaint gradientSky;
 		if (sun.isDayTime()) {
-		g.setColor(new Color(136, 171, 253));
+			gradientSky = new GradientPaint(0, 0, new Color(0, 128, 255), 0, getHeight(), new Color(205, 171, 231));
 		} else {
-			g.setColor(new Color(0, 0, 0));
+			gradientSky = new GradientPaint(0, 0, new Color(0, 0, 0), 0, getHeight(), new Color(47, 10, 72));
 		}
-		g.fillRect(0, 0, getWidth(), getHeight());
-
+		g2d.setPaint(gradientSky);
+		g2d.fillRect(0, 0, getWidth(), getHeight());
+		if (!sun.isDayTime()) {
+			for (int i = 0; i < 100; i++) {
+				g2d.setColor(new Color(255, 255, 255, (int) (Math.random() * 255)));
+				int x = (int) (Math.random() * getWidth());
+				int y = (int) (Math.random() * getHeight());
+				int width = (int) (Math.random() * 5);
+				int height = (int) (Math.random() * 5);
+				g2d.fillArc(x, y, width, height, 0, 360);
+			}
+		}
 		// Straße Zeichen
-		g.setColor(new Color(129, 122, 113));
-		g.fillRect(0, 450, getWidth(), 50);
-
+		Color STREET_COLOR = new Color(129, 122, 113);
+		g2d.setColor(STREET_COLOR);
+		g2d.fillRect(0, STREET_LEVEL, getWidth(), 50);
+		g2d.setColor(Color.WHITE);
+		for (int i = 0; i < getWidth(); i += 50) {
+			g2d.fillRect(i, STREET_LEVEL+8, 15, 4);
+		}
 		//hier wird alles gezeichnet ...
-		sun.draw(g);
+		sun.draw(g2d);
 		for (House house : houses) {
-			house.draw(g);
+			house.draw(g2d);
 		}
 		for (Tree tree : trees) {
-			tree.draw(g);
+			tree.draw(g2d);
 		}
 	}
-
 
 	/**
 	 * Aufloesung der x, y-Position, an der Mausbutton betaetigt wurde.
@@ -114,18 +181,17 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		y = e.getY(); // y-Koordinate, an der Mausereignis stattgefunden hat
 
 		// hier sollte dann der Maus-Event entsprechend verarbeitet werden
-		// if clicked on Sun -> run sun.switchTime();
+
+		// Wenn Maus auf Sonne geklickt -> Sonne wechselt Zeit
 		if (sun.isClicked(x, y)) {
 			sun.switchTime();
 		}
-		// if clicked on House -> run house.switchLight();
+		// Wenn Maus auf Haus geklickt -> Haus wechselt Licht
 		for (House house : houses) {
 			if (house.isClicked(x, y)) {
 				house.switchLight();
 			}
 		}
-
-
 		// nach jeder Veraenderung soll der Graphik-Kontext neu gezeichnet werden
 		repaint();
 	}
