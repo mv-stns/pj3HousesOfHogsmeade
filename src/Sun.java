@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * Klasse zur Darstellung der Sonne
+ * Klasse zur Darstellung der Sonne.
  * @author Marcus Vaitschulis, Ann-Kathrin Barth
  * @version 1.1
  */
@@ -12,7 +12,7 @@ public class Sun {
     private boolean dayTime = true; // Status der Sonne (Tag/Nacht)
 
     /**
-     * Zeichnet die Sonne auf dem Graphics Objekt basierend auf den Attributen der Sonne
+     * Zeichnet die Sonne auf dem Graphics Objekt basierend auf den Attributen der Sonne.
      * @param g Graphics Objekt
      */
     public void draw(Graphics g){
@@ -44,14 +44,14 @@ public class Sun {
     }
 
     /**
-     * Wechselt den Status der Sonne (Tag/Nacht) zum gegenteiligen boolean Wert
+     * Wechselt den Status der Sonne (Tag/Nacht) zum gegenteiligen boolean Wert.
      */
     public void switchTime() {
         this.dayTime = !this.dayTime;
     }
 
     /**
-     * Gibt den Status der Sonne (Tag/Nacht) zurück
+     * Gibt den Status der Sonne (Tag/Nacht) zurück.
      * @return Status der Sonne (Tag/Nacht)
      */
     public boolean isDayTime() {
@@ -59,6 +59,7 @@ public class Sun {
     }
 
     /**
+     * Überprüft, ob ein Klick innerhalb des Kreises der Sonne liegt.
      * @param x X-Koordinate der Sonne
      * @param y Y-Koordinate der Sonne
      * @return true, wenn die Koordinaten innerhalb des Kreises der Sonne liegen
@@ -71,7 +72,7 @@ public class Sun {
     }
 
     /**
-     * Setzt die X-Koordinate der Sonne
+     * Setzt die X-Koordinate der Sonne.
      * @param x X-Koordinate der Sonne
      */
     public void setX(int x) {
@@ -79,7 +80,7 @@ public class Sun {
     }
 
     /**
-     * Setzt die Y-Koordinate der Sonne
+     * Setzt die Y-Koordinate der Sonne.
      * @param y Y-Koordinate der Sonne
      */
     public void setY(int y) {
@@ -87,7 +88,7 @@ public class Sun {
     }
 
     /**
-     * Setzt den Radius der Sonne
+     * Setzt den Radius der Sonne.
      * @param radius Radius der Sonne
      */
     public void setRadius(int radius) {

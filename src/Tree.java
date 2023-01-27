@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * Klasse zur Darstellung von Bäumen
+ * Klasse zur Darstellung von Bäumen.
  * @author Marcus Vaitschulis, Ann-Kathrin Barth
  * @version 1.1
  */
@@ -12,7 +12,7 @@ public class Tree {
     private int height;
 
     /**
-     * Methode zum Zeichnen des Baumes auf dem Graphics Objekt
+     * Methode zum Zeichnen des Baumes auf dem Graphics Objekt.
      * @param g Graphics Objekt
      */
     public void draw(Graphics g){
@@ -32,7 +32,7 @@ public class Tree {
     }
 
     /**
-     * Setzt die x-Koordinate des Baumes
+     * Setzt die x-Koordinate des Baumes.
      * @param x Die x-Koordinate des Baumes
      */
     public void setX(int x) {
@@ -40,7 +40,7 @@ public class Tree {
     }
 
     /**
-     * Setzt die y-Koordinate des Baumes
+     * Setzt die y-Koordinate des Baumes.
      * @param y Die y-Koordinate des Baumes
      */
     public void setY(int y) {
@@ -48,7 +48,7 @@ public class Tree {
     }
 
     /**
-     * Setzt die Breite des Baumes
+     * Setzt die Breite des Baumes.
      * @param width Die Breite des Baumes
      */
     public void setWidth(int width) {
@@ -56,7 +56,7 @@ public class Tree {
     }
 
     /**
-     * Setzt die Höhe des Baumes
+     * Setzt die Höhe des Baumes.
      * @param height Die Höhe des Baumes
      */
     public void setHeight(int height) {

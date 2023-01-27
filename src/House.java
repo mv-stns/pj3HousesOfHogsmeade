@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * Klasse zur Darstellung der Häuser
+ * Klasse zur Darstellung der Häuser.
  * @author Marcus Vaitschulis, Ann-Kathrin Barth
  * @version 1.3
  */
@@ -15,14 +15,14 @@ public class House {
     private int windowAmount; // Anzahl der Fenster
 
     /**
-     * Switched das Licht des Hauses auf den gegenteiligen boolean Wert
+     * Switched das Licht des Hauses auf den gegenteiligen boolean Wert.
      */
     public void switchLight() {
         this.lightOn = !this.lightOn;
     }
 
     /**
-     * Zeichnet das Haus basierend auf den Attributen des Hauses
+     * Zeichnet das Haus basierend auf den Attributen des Hauses.
      * @param g Graphics Objekt
      */
     public void draw(Graphics g) {
@@ -40,7 +40,7 @@ public class House {
     }
 
     /**
-     * Korrigiert die Y Position des Hauses, sodass die Häuser auf der Straße stehen
+     * Korrigiert die Y Position des Hauses, sodass die Häuser auf der Straße stehen.
      * @param y Die y-Koordinate des Hauses
      * @param house Das Haus
      */
@@ -49,7 +49,7 @@ public class House {
     }
 
     /**
-     * Setzt die Fenster des Hauses basierend auf die Anzahl der Fenster
+     * Setzt die Fenster des Hauses basierend auf die Anzahl der Fenster.
      * @param g2d Das Graphics2D Objekt
      */
     private void setWindows(Graphics2D g2d) {
@@ -95,7 +95,7 @@ public class House {
     }
 
     /**
-     * Setzt die einzusetzende Farbe basierend auf die Wand-Farbe. Die Farbe wird um 50 abgedunkelt
+     * Setzt die einzusetzende Farbe basierend auf die Wand-Farbe. Die Farbe wird um 50 abgedunkelt.
      * @param g2d Graphics2D Objekt
      * @throws IllegalArgumentException Farbbereich fällt unter 0
      */
@@ -104,7 +104,7 @@ public class House {
     }
 
     /**
-     * Gibt die Höhe des Hauses zurück
+     * Gibt die Höhe des Hauses zurück.
      * @return Höhe des Hauses
      */
     public int getHeight() {
@@ -112,7 +112,7 @@ public class House {
     }
 
     /**
-     * Gibt die Breite des Hauses zurück
+     * Gibt die Breite des Hauses zurück.
      * @return Breite des Hauses
      */
     public int getWidth() {
@@ -120,7 +120,7 @@ public class House {
     }
 
     /**
-     * Gibt die X-Position des Hauses zurück
+     * Gibt die X-Position des Hauses zurück.
      * @return X-Position des Hauses
      */
     public int getX() {
@@ -128,7 +128,7 @@ public class House {
     }
 
     /**
-     * Gibt die Y-Position des Hauses zurück
+     * Gibt die Y-Position des Hauses zurück.
      * @return Y-Position des Hauses
      */
     public int getY() {
@@ -136,7 +136,7 @@ public class House {
     }
 
     /**
-     * Setzt die Höhe des Hauses
+     * Setzt die Höhe des Hauses.
      * @param height Die Höhe des Hauses
      */
     public void setHeight(int height) {
@@ -144,7 +144,7 @@ public class House {
     }
 
     /**
-     * Setzt die Breite des Hauses
+     * Setzt die Breite des Hauses.
      * @param width Die Breite des Hauses
      */
     public void setWidth(int width) {
@@ -152,7 +152,7 @@ public class House {
     }
 
     /**
-     * Setzt die X-Position des Hauses
+     * Setzt die X-Position des Hauses.
      * @param x X-Position des Hauses
      */
     public void setX(int x) {
@@ -160,17 +160,15 @@ public class House {
     }
 
     /**
-     * Setzt die Y-Position des Hauses
+     * Setzt die Y-Position des Hauses.
      * @param y Y-Position des Hauses
      */
     public void setY(int y) {
-        // run fixY method
         this.y = y;
-        fixY(y, this);
     }
 
     /**
-     * Setzt die Anzahl der Fenster
+     * Setzt die Anzahl der Fenster.
      * @param amount Anzahl der Fenster
      */
     public void setWindowAmount(int amount) {
@@ -178,7 +176,7 @@ public class House {
     }
 
     /**
-     * Prüft, ob der Klick innerhalb des Hauses war
+     * Prüft, ob der Klick innerhalb des Hauses war.
      * @param x X-Position des Mauszeigers
      * @param y Y-Position des Mauszeigers
      * @return true wenn der Mauszeiger innerhalb des Hauses ist
@@ -189,7 +187,7 @@ public class House {
     }
 
     /**
-     * Setzt die Farbe der Hauswände
+     * Setzt die Farbe der Hauswände.
      * @param color Die Farbe der Hauswände
      */
     public void setWallColor(Color color) {
