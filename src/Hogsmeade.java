@@ -15,14 +15,16 @@ import java.io.Serial;
 public class Hogsmeade extends JPanel implements MouseListener {
 
 	@Serial
-	private static final long serialVersionUID = 1L;
-	Sun sun;
-	House[] houses;
-	Tree[] trees;
-	final int STREET_LEVEL = 450;
+	private static final long serialVersionUID = 1L; // Wird fuer die Serialisierung benoetigt
+	Sun sun; // Sonne
+	House[] houses; // Array mit allen Häusern
+	Tree[] trees; // Array mit allen Bäumen
+	final int STREET_LEVEL = 450; // Straßen Höhe
 	/**
 	 * Initialisierung des Panels und setzen des MouseListerns
 	 * fuer die Verwendung von Maus-Ereignissen
+	 * @param frameWidth Breite des JFrames. Wird benoetigt, um die Sonne an der richtigen Stelle zu platzieren
+	 * @param frameHeight Hoehe des JFrames. Wird derzeit nicht benötigt
 	 */
 	public Hogsmeade(int frameWidth, int frameHeight) {
 
